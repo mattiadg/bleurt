@@ -333,7 +333,7 @@ def get_cfg() -> Namespace:
         "--model",
         type=str,
         required=False,
-        default="Unbabel/wmt22-comet-da",
+        default="",
         help="COMET model to be used.",
     )
     parser.add_argument(
@@ -394,7 +394,7 @@ def get_cfg() -> Namespace:
             print("SacreBLEU error:", e, file=sys.stderr)
             sys.exit(1)
 
-    if cfg.model.endswith(".ckpt") and os.path.exists(cfg.model):
+    if os.path.exists(cfg.model):
         cfg.model_path = cfg.model
 
     return cfg, parser
